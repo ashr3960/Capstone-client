@@ -5,5 +5,9 @@
 @mixin subheading-font {
     font-family: 'Sour Gummy', sans-serif;
     font-weight: 400;
-    color: $white;
+}
+
+@mixin body-font {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
 }

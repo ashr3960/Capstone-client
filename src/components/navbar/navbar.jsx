@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FiMenu } from "react-icons/fi"; 
-import "./Navbar.scss"; 
+import "./navbar.scss"; 
 
 import mainLogo from "../../../public/logos/mainlogo.png";
 import mainBrand from "../../../public/logos/mainbrand.png";
