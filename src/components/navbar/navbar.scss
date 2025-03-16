@@ -1,0 +1,140 @@
+@use "../../styles/global" as *;
+@use "../../styles/font" as *;
+@use "../../styles/mixin" as *;
+
+.navbar {
+  background-color: $grey;
+  padding: 1rem 2rem;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  // LOGO 
+  &__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    &:hover, &.active {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    }
+  }
+
+  &__image, &__brand {
+    height: 4rem;
+    width: auto;
+  }
+
+  // NAV LINKS
+  &__links {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+    @include subheading-font;
+
+    @include tablet {
+      display: none; 
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $white;
+    font-size: 1.2rem;
+
+    &:hover, &.active {
+      color: $yellow;
+    }
+  }
+
+  // LOGIN CONTAINER 
+  &__logincontainer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+
+    &:hover, &.active {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+
+      .navbar__login {
+        color: $yellow;
+      }
+    }
+  }
+
+  // PROFILE IMAGE 
+  &__profile {
+    height: 1.5rem;
+    width: auto;
+    cursor: pointer;
+  }
+
+  &__logincontainer:hover &__profile,
+  &__logincontainer.active &__profile {
+    content: url("../../../public/logos/profilelogohover.png");
+  }
+
+  // LOGIN 
+  &__login {
+    text-decoration: none;
+    color: $white;
+    font-size: 1.2rem;
+
+    &:hover, &.active {
+      color: $yellow;
+    }
+  }
+
+  // MENU ICON 
+  &__menu-icon {
+    display: none;
+    font-size: 2rem;
+    color: $white;
+    cursor: pointer;
+
+    @include tablet {
+      display: block;
+    }
+
+    &:hover, &.active {
+      color: $yellow;
+    }
+  }
+
+  .navbar__menu-icon.active {
+    color: $yellow;
+  }
+
+  // MOBILE MENU 
+  &__mobile-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 5rem;
+    right: 1rem;
+    background: rgba($grey, 0.9);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+    a {
+      color: $white;
+      @include subheading-font;
+      padding: 0.8rem;
+      text-decoration: none;
+
+      &:hover {
+        color: $yellow;
+      }
+    }
+  }
+}
