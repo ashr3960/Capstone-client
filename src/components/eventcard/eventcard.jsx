@@ -2,16 +2,16 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./eventcard.scss";
 
-const EventCard = ({ title, date, location, image, host }) => {
+const EventCard = ({ id, title, date, location, image, host }) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate("/carddetails");
+        navigate(`/carddetails/${id}`);
     };
 
     return (
-        <div className="card">
-            <div className="card__container" onClick={handleClick}>
+        <div className="card" onClick={handleClick}>
+            <div className="card__container">
                 <div className="card__top">
                     <img src={image} alt={title} className="card__image" />
                 </div>
@@ -27,4 +27,3 @@ const EventCard = ({ title, date, location, image, host }) => {
 };
 
 export default EventCard;
-
