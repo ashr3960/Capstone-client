@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import EventCard from "../../components/eventcard/eventcard";
+import Carousel from "../../components/carousel/carousel"; 
 import "./home.scss";
 
 const Home = () => {
@@ -16,10 +17,7 @@ const Home = () => {
   return (
     <div className="home">
       {/* Hero Section */}
-      <section className="hero">
-        <h1>Discover Exciting Events!</h1>
-        <p>Join amazing experiences happening near you.</p>
-      </section>
+      <Carousel />
 
       {/* Events Section */}
       <div className="events-container">
