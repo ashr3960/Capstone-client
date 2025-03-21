@@ -20,19 +20,22 @@ const Navbar = () => {
                     <img src={mainBrand} alt="Brand Logo" className="navbar__brand" />
                 </NavLink>
 
-                {/* NAV LINKS */}
-                <ul className="navbar__links">
-                    <li><NavLink to="/about" className="navbar__link">About</NavLink></li>
-                    <li><NavLink to="/community" className="navbar__link">Community</NavLink></li>
-                    <li><NavLink to="/create" className="navbar__link">Create Event</NavLink></li>
-                    <li>
-                        {/* LOGIN CONTAINER */}
-                        <NavLink to="/login" className="navbar__logincontainer">
-                            <img src={profilepic} alt="Profile" className="navbar__profile" />
-                            <span className="navbar__login">Login</span>
-                        </NavLink>
-                    </li>
-                </ul>
+                <div className="navbar__linkcontainer">
+                    
+                    {/* NAV LINKS */}
+                    <ul className="navbar__links">
+                        <li><NavLink to="/about" className="navbar__link">About</NavLink></li>
+                        <li><NavLink to="/community" className="navbar__link">Community</NavLink></li>
+                        <li><NavLink to="/create" className="navbar__link">Create Event</NavLink></li>
+                    </ul>
+
+                    {/* LOGIN CONTAINER */}
+                    <NavLink to="/login" className="navbar__logincontainer">
+                        <img src={profilepic} alt="Profile" className="navbar__profile" />
+                        <span className="navbar__login">Login</span>
+                    </NavLink>
+
+                </div>
 
                 {/* MENU ICON */}
                 <FiMenu 
@@ -47,7 +50,6 @@ const Navbar = () => {
                         <NavLink to="/about" onClick={() => setMenuOpen(false)}>About</NavLink>
                         <NavLink to="/community" onClick={() => setMenuOpen(false)}>Community</NavLink>
                         <NavLink to="/create" onClick={() => setMenuOpen(false)}>Create Event</NavLink>
-                        <NavLink to="/login" onClick={() => setMenuOpen(false)}>Login</NavLink>
                     </div>
                 )}
             </div>

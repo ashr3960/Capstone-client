@@ -7,6 +7,10 @@
   padding: 1rem 2rem;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 
+  @include mobile {
+    padding: 1rem 0.5rem;
+  }
+
   &__container {
     display: flex;
     justify-content: space-between;
@@ -30,9 +34,30 @@
   &__image, &__brand {
     height: 4rem;
     width: auto;
+
+    @include mobile {
+      height: 3.2rem;
+    }
   }
 
   // NAV LINKS
+
+  &__linkcontainer {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+  
+    @include tablet {
+      flex-grow: 1; 
+      justify-content: flex-end; 
+      margin-right: 2rem;
+    }
+
+    @include mobile {
+      margin-right: 1rem;
+    }
+  }
+
   &__links {
     list-style: none;
     display: flex;
@@ -76,6 +101,10 @@
     height: 1.5rem;
     width: auto;
     cursor: pointer;
+
+    @include mobile {
+      display: none;
+    }
   }
 
   &__logincontainer:hover &__profile,
@@ -86,11 +115,17 @@
   // LOGIN 
   &__login {
     text-decoration: none;
+    list-style: none;
+    @include subheading-font;
     color: $white;
     font-size: 1.2rem;
 
     &:hover, &.active {
       color: $yellow;
+    }
+
+    @include mobile {
+      font-size: 1.1rem;
     }
   }
 
@@ -103,6 +138,10 @@
 
     @include tablet {
       display: block;
+    }
+
+    @include mobile {
+      font-size: 1.7em;
     }
 
     &:hover, &.active {
