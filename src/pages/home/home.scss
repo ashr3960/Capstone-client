@@ -3,10 +3,7 @@
 @use "../../styles/mixin" as *;
 
 .home {
-    text-align: center;
-    padding: 1rem;
-
-    .events-container {
+    .events__container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 1rem;
@@ -19,3 +16,200 @@
         @include body-font;
     }
 }
+
+
+.hero__section {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    height: 30.7rem;
+    background-image: url('../../../public/images/Hero.jpg');
+    background-size: cover;
+    background-position: center;
+    color: $white;
+    text-align: left;
+    position: relative; 
+}
+
+.hero__content {
+    padding: 2rem 0; 
+    padding-left: 5rem;
+
+    @include tablet {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+  
+.hero__title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    @include body-font;
+}
+  
+.hero__subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    @include body-font;
+}
+
+.cta__button {
+    background-color: $grey;
+    color: $white;  
+    padding: 0.8rem 1.2rem;
+    text-decoration: none;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    @include subheading-font;
+
+    &:hover {
+        background-color: $yellow;  
+        color: $grey;  
+    }
+}
+
+
+
+
+
+  
+
+
+.intro__section {
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem 5rem;
+    height: auto;
+    align-items: center;
+
+    @include tablet {
+        padding: 3rem 2rem;
+        flex-direction: column;
+    }
+    
+    .left__section {
+        width: 50%;
+        text-align: left;
+
+        @include tablet {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+      
+        .logo {
+          display: flex;
+          align-items: center; 
+          margin-bottom: 4rem;
+      
+            h2 {
+                font-size: 3rem;
+                margin-right: 1.2rem; 
+                color: $grey;
+                @include body-font;
+            }
+      
+            .logo__wrapper {
+                display: flex;
+                align-items: center;
+
+                &:hover {
+                    transform: scale(1.15);
+                }
+            }
+      
+            .navbar__image {
+                width: 4rem;  
+                height: auto;
+            }
+        
+            .navbar__brand {
+                width: 9rem; 
+                height: auto;
+            }
+        }
+      
+        p {
+            font-size: 1.1rem;
+            color: $grey;
+            @include body-font;
+            margin-bottom: 1.2rem;
+        }
+
+    }
+      
+        
+    .right__section {
+        width: 45%;
+        position: relative;
+
+        @include tablet {
+            width: 100%;
+        }
+          
+            
+        .video__container {
+            position: relative;
+            cursor: pointer;
+
+            &:hover {
+                transform: scale(1.15);
+            }
+                
+            .event__video {
+                width: 100%;
+                border-radius: 10px;
+            }
+                
+        }
+
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+          
+        .popup-content {
+            background: $grey;
+            padding: 10px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+          
+        .popup-video {
+            width: 100%;
+            border-radius: 10px;
+        }
+          
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            align-self: flex-end;
+            margin-bottom: 10px;
+            color: $white;
+          
+            &:hover {
+              color: $yellow;
+            }
+        }
+          
+    }
+}
+  
