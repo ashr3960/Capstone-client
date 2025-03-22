@@ -84,24 +84,30 @@ const Home = () => {
       </div>
 
       {/* Events Section */}
-      <div className="events__container">
-        {events.length > 0 ? (
-          events.map((event) => (
-            <EventCard 
-              key={event.id} 
-              id={event.id}
-              title={event.title}
-              location={event.location}
-              image={event.image}
-              host={event.host}
-              date={event.event_date} 
-            />
-          ))
-        ) : (
-          <p className="loading">Loading events...</p>
-        )}
+      <div className="events">
+
+        <h2 className="events__title">Upcoming Events</h2>
+        <div className="events__container">
+          {events.length > 0 ? (
+            events.map((event) => (
+              <EventCard 
+                key={event.id} 
+                id={event.id}
+                title={event.title}
+                location={event.location}
+                image={event.image}
+                host={event.host}
+                date={event.event_date} 
+              />
+            ))
+          ) : (
+            <p className="loading">Loading events...</p>
+          )}
+        </div>
       </div>
 
+
+      <h2 className="carousel__title">Featured Events</h2>
       <Carousel />
     </div>
   );

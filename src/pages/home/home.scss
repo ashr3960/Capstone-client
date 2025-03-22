@@ -3,17 +3,52 @@
 @use "../../styles/mixin" as *;
 
 .home {
+
+    .events {
+        padding: 0rem 5rem;
+        margin-bottom: 6rem;
+
+        @include tablet {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+    }
+
     .events__container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1rem;
-        padding: 2rem 0rem;
+        grid-template-columns: repeat(auto-fit, 250px); 
+        gap: 1rem; 
+        margin-bottom: 5rem;
+
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .events__title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        @include body-font;
     }
 
     .loading {
         font-size: 1.5rem;
         color: $grey;
         @include body-font;
+    }
+}
+
+.carousel__title {
+    font-size: 3rem;
+    font-weight: 700;
+    @include body-font;
+
+    padding: 0rem 5rem;
+
+    @include tablet {
+        padding-left: 2rem;
+        padding-right: 2rem;
     }
 }
 
@@ -74,16 +109,10 @@
 }
 
 
-
-
-
-  
-
-
 .intro__section {
     display: flex;
     justify-content: space-between;
-    padding: 3rem 5rem;
+    padding: 6rem 5rem;
     height: auto;
     align-items: center;
 
