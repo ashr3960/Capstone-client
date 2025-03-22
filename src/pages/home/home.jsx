@@ -27,9 +27,11 @@ const Home = () => {
   };
 
   useEffect(() => {
-    // Fetch events from the backend
-    axios.get("http://localhost:8080/api/publicevents")
-      .then((response) => setEvents(response.data))
+    // Fetch upcoming events
+    axios.get("http://localhost:8080/api/publicevents/upcomingevents")
+      .then((response) => {
+        setEvents(response.data);
+      })
       .catch((error) => console.error("Error fetching events:", error));
   }, []);
 
@@ -38,11 +40,11 @@ const Home = () => {
 
       {/* Hero Section */}
       <section className="hero__section">
-          <div className="hero__content">
-            <h1 className="hero__title">Buzzing with Excitement? So Are We!</h1>
-            <p className="hero__subtitle">Keep in the loop with the hottest happenings around you.</p>
-            <Link to="/login" className="cta__button">Start Buzzing!</Link>
-          </div>
+        <div className="hero__content">
+          <h1 className="hero__title">Buzzing with Excitement? So Are We!</h1>
+          <p className="hero__subtitle">Keep in the loop with the hottest happenings around you.</p>
+          <Link to="/login" className="cta__button">Start Buzzing!</Link>
+        </div>
       </section>
 
       {/* Intro Section */}
@@ -84,7 +86,17 @@ const Home = () => {
       {/* Events Section */}
       <div className="events__container">
         {events.length > 0 ? (
-          events.map((event) => <EventCard key={event.id} {...event} />)
+          events.map((event) => (
+            <EventCard 
+              key={event.id} 
+              id={event.id}
+              title={event.title}
+              location={event.location}
+              image={event.image}
+              host={event.host}
+              date={event.event_date} 
+            />
+          ))
         ) : (
           <p className="loading">Loading events...</p>
         )}

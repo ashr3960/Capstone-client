@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/navbar";
+import Footer from "./components/footer/footer"
 import Home from "./pages/home/home";
 import "./App.scss"; 
 
@@ -19,6 +20,8 @@ function App() {
           <Route path="*" element={<h2>404 - Page Not Found</h2>} />
         </Routes>
       </div>
+
+      <Footer />
     </Router>
   );
 }

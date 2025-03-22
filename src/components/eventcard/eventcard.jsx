@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import moment from "moment"; 
 import "./eventcard.scss";
 
 const EventCard = ({ id, title, date, location, image, host }) => {
@@ -9,6 +10,8 @@ const EventCard = ({ id, title, date, location, image, host }) => {
         navigate(`/carddetails/${id}`);
     };
 
+    const formattedDate = moment(date).format("MMMM Do [@] h:mm A");
+
     return (
         <div className="card" onClick={handleClick}>
             <div className="card__container">
@@ -17,7 +20,7 @@ const EventCard = ({ id, title, date, location, image, host }) => {
                 </div>
                 <div className="card__bottom">
                     <h3 className="card__bottom__title">{title}</h3>
-                    <p className="card__bottom__date">{date}</p>
+                    <p className="card__bottom__date">{formattedDate}</p>
                     <p className="card__bottom__location">{location}</p>
                     <p className="card__bottom__host">{host}</p>
                 </div>

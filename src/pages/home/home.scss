@@ -105,6 +105,10 @@
           display: flex;
           align-items: center; 
           margin-bottom: 4rem;
+
+            @include mobile {
+                flex-direction: column;
+            }
       
             h2 {
                 font-size: 3rem;
@@ -125,11 +129,19 @@
             .navbar__image {
                 width: 4rem;  
                 height: auto;
+
+                @include mobile {
+                    width: 5rem;
+                }
             }
         
             .navbar__brand {
                 width: 9rem; 
                 height: auto;
+
+                @include mobile {
+                    width: 10rem;
+                }
             }
         }
       
