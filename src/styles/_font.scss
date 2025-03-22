@@ -1,0 +1,13 @@
+@use "./global" as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy&family=Nunito:wght@300;400;600;700&display=swap');
+
+@mixin subheading-font {
+    font-family: 'Sour Gummy', sans-serif;
+    font-weight: 400;
+}
+
+@mixin body-font {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+}
