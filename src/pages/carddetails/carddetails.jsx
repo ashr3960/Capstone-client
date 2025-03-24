@@ -11,9 +11,9 @@ const CardDetails = () => {
     const [rsvpStatus, setRsvpStatus] = useState(false);
 
     useEffect(() => {
-        const storedUserId = localStorage.getItem("userId"); 
-        if (storedUserId) {
-            setUserId(storedUserId); // Set the userId from localStorage
+        const storedUser = JSON.parse(localStorage.getItem("user"));
+        if (storedUser && storedUser.user) {
+            setUserId(storedUser.user.id); 
         } else {
             console.error("User not logged in or userId not available.");
         }
