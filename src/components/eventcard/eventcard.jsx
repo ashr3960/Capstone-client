@@ -12,11 +12,14 @@ const EventCard = ({ id, title, date, location, image, host }) => {
 
     const formattedDate = moment(date).format("MMMM Do [@] h:mm A");
 
+    // If image is stored locally, create URL
+    const imageUrl = image.startsWith('http') ? image : `http://localhost:8080/uploads/${image}`;
+
     return (
         <div className="card" onClick={handleClick}>
             <div className="card__container">
                 <div className="card__top">
-                    <img src={image} alt={title} className="card__image" />
+                    <img src={imageUrl} alt={title} className="card__image" />
                 </div>
                 <div className="card__bottom">
                     <h3 className="card__bottom__title">{title}</h3>
@@ -28,5 +31,6 @@ const EventCard = ({ id, title, date, location, image, host }) => {
         </div>
     );
 };
+
 
 export default EventCard;

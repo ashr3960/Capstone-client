@@ -26,8 +26,10 @@ export default function AuthPage() {
                 const response = await axios.post("http://localhost:8080/api/users", {
                     ...formData,
                 });
-                // After successful signup, redirect to login page
-                navigate("/login");
+                // After successful signup, reset form data, redirect to login page, and refresh the page
+                setFormData({ name: "", email: "", password: "", fullName: "", username: "" }); // Clear the form
+                navigate("/login"); // Redirect to the login page
+                window.location.reload();
             } else {
                 const response = await axios.post("http://localhost:8080/api/users/login", {
                     email: formData.email,

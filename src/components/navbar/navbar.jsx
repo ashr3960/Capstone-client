@@ -78,7 +78,8 @@ const Navbar = () => {
                             {/* Dropdown Modal */}
                             {dropdownOpen && (
                                 <div className="navbar__dropdown">
-                                    <NavLink to="/my-events" className="navbar__dropdown-item" onClick={closeAllMenus}>My Events</NavLink>
+                                    <NavLink to="/myevents" className="navbar__dropdown-item" onClick={closeAllMenus}>My Events</NavLink>
+                                    <NavLink to="/createvent" className="navbar__dropdown-item" onClick={closeAllMenus}>Create Event</NavLink>
                                     <button onClick={handleLogout} className="navbar__dropdown-item">Logout</button>
                                 </div>
                             )}
@@ -107,6 +108,7 @@ const Navbar = () => {
                         {user && (
                             <>
                                 <NavLink to="/myevents" onClick={closeAllMenus}>My Events</NavLink>
+                                <NavLink to="/createvent" onClick={closeAllMenus}>Create Event</NavLink>
                                 <button onClick={handleLogout} className="navbar__mobile-logout">Logout</button>
                             </>
                         )}

@@ -1,20 +1,22 @@
+
 @use "../../styles/global" as *;
 @use "../../styles/font" as *;
 @use "../../styles/mixin" as *;
 
-.login__container {
+.create-event__container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-
-    .login__box {
+    height: 120vh;
+    
+    form {
         background: lighten($grey, 5%);
         padding: 2rem;
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         text-align: center;
-        width: 350px;
+        width: 400px;
 
         h2 {
             margin-bottom: 1rem;
@@ -43,7 +45,7 @@
                 @include body-font;
             }
 
-            input {
+            input, textarea {
                 width: 100%;
                 padding: 0.5rem 0rem;
                 border: 1px solid $lightgrey;
@@ -77,19 +79,6 @@
 
             &:hover {
                 background: darken($yellow, 20%);
-            }
-        }
-
-        .toggle__text {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: $yellow;
-            cursor: pointer;
-            transition: 0.3s;
-            @include body-font;
-
-            &:hover {
-                text-decoration: underline;
             }
         }
     }
