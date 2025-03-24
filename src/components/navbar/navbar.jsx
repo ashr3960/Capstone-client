@@ -63,9 +63,9 @@ const Navbar = () => {
                 {/* DESKTOP NAV */}
                 <div className="navbar__linkcontainer">
                     <ul className="navbar__links">
-                        <li><NavLink to="/about" className="navbar__link" onClick={closeAllMenus}>About</NavLink></li>
-                        <li><NavLink to="/community" className="navbar__link" onClick={closeAllMenus}>Community</NavLink></li>
-                        <li><NavLink to="/create" className="navbar__link" onClick={closeAllMenus}>Browse Events</NavLink></li>
+                        {/* <li><NavLink to="/about" className="navbar__link" onClick={closeAllMenus}>About</NavLink></li>
+                        <li><NavLink to="/community" className="navbar__link" onClick={closeAllMenus}>Community</NavLink></li> */}
+                        <li><NavLink to="/events" className="navbar__link" onClick={closeAllMenus}>Browse Events</NavLink></li>
                     </ul>
 
                     {/* USER PROFILE / LOGIN */}
@@ -101,9 +101,9 @@ const Navbar = () => {
                 {/* MOBILE MENU */}
                 {menuOpen && (
                     <div className="navbar__mobile-menu" ref={mobileMenuRef}>
-                        <NavLink to="/about" onClick={closeAllMenus}>About</NavLink>
-                        <NavLink to="/community" onClick={closeAllMenus}>Community</NavLink>
-                        <NavLink to="/create" onClick={closeAllMenus}>Browse Events</NavLink>
+                        {/* <NavLink to="/about" onClick={closeAllMenus}>About</NavLink>
+                        <NavLink to="/community" onClick={closeAllMenus}>Community</NavLink> */}
+                        <NavLink to="/events" onClick={closeAllMenus}>Browse Events</NavLink>
                         
                         {user && (
                             <>
