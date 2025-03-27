@@ -5,22 +5,21 @@ import moment from "moment";
 import "./carddetails.scss";
 
 const CardDetails = () => {
-    const { id } = useParams(); 
+    const { id } = useParams();
     const [event, setEvent] = useState(null);
     const [userId, setUserId] = useState(null);
     const [rsvpStatus, setRsvpStatus] = useState(false);
+    const [error, setError] = useState(null); // To show error message when not logged in
 
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem("user"));
         if (storedUser && storedUser.user) {
-            setUserId(storedUser.user.id); 
-        } else {
-            console.error("User not logged in or userId not available.");
+            setUserId(storedUser.user.id); // Set userId if logged in
         }
 
         // Fetch the event details
         axios
-            .get(`http://localhost:8080/api/publicevents/${id}`)
+            .get(`http://localhost:8080/api/events/${id}`)
             .then((response) => {
                 setEvent(response.data);
             })
@@ -28,7 +27,7 @@ const CardDetails = () => {
                 console.error("Error fetching event details:", error);
             });
 
-        // Check if the user has already RSVP'd
+        // Check if the user is logged in, and if so, check RSVP status
         if (userId) {
             axios
                 .get(`http://localhost:8080/api/rsvp/${userId}/${id}`)
@@ -57,7 +56,7 @@ const CardDetails = () => {
                     alert("Error RSVP'ing to the event.");
                 });
         } else {
-            console.error("No user logged in. Unable to RSVP.");
+            setError("You must be logged in to RSVP.");
         }
     };
 
@@ -95,6 +94,9 @@ const CardDetails = () => {
                     </button>
                 )}
             </div>
+
+            {/* Display error message if user is not logged in */}
+            {error && <p className="error-message">{error}</p>}
         </div>
     );
 };
