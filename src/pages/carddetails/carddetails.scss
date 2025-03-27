@@ -15,12 +15,12 @@
     &__top {
         display: flex;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 4rem;
     }
 
     &__image {
         width: 100%;
-        max-width: 500px;
+        max-width: 600px;
         height: auto;
         border-radius: 8px;
         object-fit: cover;
@@ -35,16 +35,22 @@
 
     &__title {
         @include subheading-font;
-        font-size: 2rem;
+        font-size: 2.8rem;
         font-weight: bold;
         color: $grey;
     }
 
     &__date,
-    &__location,
-    &__host {
+    &__location {
         font-size: 1rem;
         color: $lightgrey;
+    }
+
+    &__host {
+        color: $yellow;
+        font-size: 1rem;
+        font-weight: bold;
+        margin-top: 2rem;
     }
 
     &__description {
@@ -55,28 +61,90 @@
 
     &__bottom {
         display: flex;
+        gap: 2rem;
         justify-content: center;
-        margin-top: 2rem;
+        margin-top: 4rem;
     }
 
     .rsvp-btn {
+        @include body-font;
         background-color: $yellow;
-        color: $grey;
         padding: 0.8rem 2rem;
+        background: $yellow;
+        border: none;
+        color: $grey;
         font-size: 1rem;
         font-weight: bold;
-        border: none;
-        border-radius: 8px;
+        border-radius: 5px;
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        transition: 0.3s;
+        margin-top: 0.5rem;
 
         &:hover {
-            background-color: darken($yellow, 10%);
+            background: darken($yellow, 20%);
+            color: $white;
+            transform: translateY(-2px);
         }
 
         &:disabled {
             background-color: $lightgrey;
             cursor: not-allowed;
+            transform: none;
+            color: $grey;
         }
     }
+
+    .edit-btn {
+        @include body-font;
+        background-color: $yellow;
+        padding: 0.8rem 2rem;
+        background: $yellow;
+        border: none;
+        color: $grey;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 0.5rem;
+
+        &:hover {
+            background: darken($yellow, 20%);
+            color: $white;
+            transform: translateY(-2px);
+        }
+    }
+
+    
+    .delete-btn {
+        background: transparent; 
+        border: 1.5px solid $yellow; 
+        color: $yellow;
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 0.5rem;
+
+        &:hover {
+            background: $yellow;
+            color: $grey;
+            transform: translateY(-2px);
+        }
+    }
+
+    .icon {
+        margin-right: 0.5rem;
+    }
+}
+
+.error-message {
+    color: $red;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 1000;
+    text-align: center;
 }

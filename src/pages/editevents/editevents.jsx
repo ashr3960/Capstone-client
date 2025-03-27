@@ -1,23 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import "./createevents.scss";
+import { useParams, useNavigate } from "react-router-dom";
+import "./editevents.scss";
 
-const CreateEvent = () => {
+const EditEvent = () => {
+    const { id } = useParams();
     const [formData, setFormData] = useState({
         title: "",
         description: "",
         event_date: "",
         location: "",
         image: null,
-        host: "", // Added host field
+        host: "",
     });
     const [error, setError] = useState("");
 
     const navigate = useNavigate();
 
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    const isAuthorized = storedUser.user?.is_authorized;
+    useEffect(() => {
+        // Fetch event details to prefill the form
+        axios
+            .get(`http://localhost:8080/api/events/${id}`)
+            .then((response) => {
+                const event = response.data;
+                // Convert event date to local time
+                const eventDate = new Date(event.event_date);
+                const localDate = new Date(eventDate.getTime() - eventDate.getTimezoneOffset() * 60000);
+                const formattedDate = localDate.toISOString().slice(0, 16); // YYYY-MM-DDTHH:MM
+                setFormData({
+                    title: event.title,
+                    description: event.description,
+                    event_date: formattedDate,
+                    location: event.location,
+                    host: event.host,
+                    image: event.image,
+                });
+            })
+            .catch((error) => {
+                console.error("Error fetching event details:", error);
+            });
+    }, [id]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -37,47 +59,33 @@ const CreateEvent = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!formData.title || !formData.description || !formData.event_date || !formData.location || !formData.image || !formData.host) {
+        if (!formData.title || !formData.description || !formData.event_date || !formData.location || !formData.host) {
             setError("All fields are required!");
             return;
         }
 
-        // Get the user ID from localStorage
-        const storedUser = JSON.parse(localStorage.getItem("user"));
-        const userId = storedUser?.user?.id;
-
-        if (!userId) {
-            setError("User is not logged in.");
-            return;
-        }
-
-        // Prepare the form data
         const formDataToSend = new FormData();
         formDataToSend.append("title", formData.title);
         formDataToSend.append("description", formData.description);
         formDataToSend.append("event_date", formData.event_date);
         formDataToSend.append("location", formData.location);
-        formDataToSend.append("image", formData.image);
-        formDataToSend.append("user_id", userId);
-        formDataToSend.append("host", formData.host); 
+        if (formData.image) formDataToSend.append("image", formData.image);
+        formDataToSend.append("host", formData.host);
 
         try {
-            const apiUrl = isAuthorized
-                ? "http://localhost:8080/api/publicevents"
-                : "http://localhost:8080/api/privateevents";
-
-            await axios.post(apiUrl, formDataToSend, {
+            await axios.put(`http://localhost:8080/api/events/${id}`, formDataToSend, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
             });
 
-            navigate("/myevents");
+            navigate("/myevents"); // Redirect to the event details page after successful update
         } catch (err) {
             setError(err.response?.data?.error || "An error occurred.");
         }
     };
 
+    // Handle cancel button click
     const handleCancel = () => {
         navigate("/myevents"); 
     };
@@ -87,7 +95,7 @@ const CreateEvent = () => {
             {error && <p className="error">{error}</p>}
 
             <form onSubmit={handleSubmit}>
-                <h2>Create an Event</h2>
+                <h2>Edit Event</h2>
 
                 <div className="input__group">
                     <label>Event Title</label>
@@ -149,7 +157,7 @@ const CreateEvent = () => {
 
                 <div className="buttons">
                     <button type="submit" className="submit__btn">
-                        Create Event
+                        Save Changes
                     </button>
                     <button type="button" className="cancel__btn" onClick={handleCancel}>
                         Cancel
@@ -160,4 +168,4 @@ const CreateEvent = () => {
     );
 };
 
-export default CreateEvent;
+export default EditEvent;

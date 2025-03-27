@@ -8,7 +8,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 120vh;
+    height: 140vh;
+
+    .error {
+        color: red;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        @include body-font;
+        text-transform: uppercase;
+    }
     
     form {
         background: lighten($grey, 5%);
@@ -23,14 +31,6 @@
             color: $white;
             @include body-font;
             font-size: 1.5rem;
-        }
-
-        .error {
-            color: red;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-            @include body-font;
-            text-transform: uppercase;
         }
 
         .input__group {

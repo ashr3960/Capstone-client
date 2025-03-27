@@ -26,7 +26,7 @@
   
 .event-card {
     position: relative;
-    height: 400px; 
+    height: 350px; 
     background-color: $grey;
     border-radius: 4px;
     overflow: hidden;
@@ -93,19 +93,17 @@
 }
   
 .event-title {
-    color: #fff;
-    font-size: 0.8rem;
-    font-weight: 600;
+    color: $white;
+    @include body-font;
+    font-size: 1.5rem;
     margin: 0 0 0.25rem 0;
-    line-height: 1.2;
-    letter-spacing: 0.3px;
 }
   
 .event-category {
-    color: #e5e5e5;
-    font-size: 0.5rem;
+    color: $white;
+    font-size: 1rem;
     margin: 0;
     opacity: 0.8;
-    line-height: 1.4;
+    @include body-font;
 }
   

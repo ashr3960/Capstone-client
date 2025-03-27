@@ -7,6 +7,8 @@ import MyEvents from "./pages/myevents/myevents";
 import CreateEvent from "./pages/createevents/createevents"
 import CardDetails from "./pages/carddetails/carddetails"
 import Events from "./pages/events/events"
+import EditEvents from "./pages/editevents/editevents"
+import About from "./pages/about/about"
 import "./App.scss"; 
 
 function App() {
@@ -21,8 +23,9 @@ function App() {
           <Route path="/createvent" element={<CreateEvent/>} />
           <Route path="/carddetails/:id" element={<CardDetails/>} />
           <Route path="/events" element={<Events/>} />
-          {/* <Route path="/about" element={<h2>About</h2>} />
-          <Route path="/community" element={<h2>Community Threads</h2>} /> */}
+          <Route path="/carddetails/edit/:id" element={<EditEvents/>} />
+          <Route path="/about" element={<About/>} />
+          {/* <Route path="/community" element={<h2>Community Threads</h2>} /> */}
           <Route path="*" element={<h2>404 - Page Not Found</h2>} />
         </Routes>
       </div>

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import EventCard from "../../components/eventcard/eventcard";
 import "./events.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const Events = () => {
     const [events, setEvents] = useState([]);
@@ -28,17 +30,20 @@ const Events = () => {
 
     return (
         <div className="events">
-            <h1>Upcoming Events</h1>
+            <h1>Browse Latest Events</h1>
 
             {/* Search Bar */}
             <div className="events__search">
-                <input
-                    type="text"
-                    placeholder="Search events by title or location"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="events__search-input"
-                />
+                <div className="events__search-container">
+                    <FontAwesomeIcon icon={faSearch} className="events__search-icon" />
+                    <input
+                        type="text"
+                        placeholder="Search events by title or location"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="events__search-input"
+                    />
+                </div>
             </div>
 
             <div className="events__container">

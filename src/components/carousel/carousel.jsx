@@ -14,14 +14,14 @@ export default function Carousel() {
         const itemWidth = carouselRef.current.offsetWidth / 3 + 8;
         const maxIndex = events.length - 3;
 
-        let newIndex = currentIndex + 1.5;
+        let newIndex = currentIndex + 1;
         if (newIndex > maxIndex) {
-            newIndex = 0; 
+            newIndex = 0; // Reset to the first event
         }
         
         setCurrentIndex(newIndex);
-        carouselRef.current.style.transition = "transform 1.5s ease-in-out";
-        carouselRef.current.style.transform = `translateX(-${(newIndex + 1) * itemWidth}px)`;
+        carouselRef.current.style.transition = "transform 1s ease-in-out"; // Slow down the transition
+        carouselRef.current.style.transform = `translateX(-${(newIndex) * itemWidth}px)`;
     };
 
     const handlePrev = () => {
@@ -29,25 +29,25 @@ export default function Carousel() {
 
         const itemWidth = carouselRef.current.offsetWidth / 3;
 
-        let newIndex = currentIndex - 1.5;
+        let newIndex = currentIndex - 1;
         if (newIndex < 0) {
             newIndex = events.length - 3; 
         }
 
         setCurrentIndex(newIndex);
-        carouselRef.current.style.transition = "transform 1s ease-in-out";
+        carouselRef.current.style.transition = "transform 1s ease-in-out"; // Slow down the transition
         carouselRef.current.style.transform = `translateX(-${newIndex * itemWidth}px)`;
     };
 
     useEffect(() => {
         let interval;
         if (!isHovered) {
-            interval = setInterval(handleNext, 3000); 
+            interval = setInterval(handleNext, 3500); // 5 seconds interval for auto-scroll
         } else {
-            clearInterval(interval); 
+            clearInterval(interval);
         }
 
-        return () => clearInterval(interval); 
+        return () => clearInterval(interval);
     }, [currentIndex, isHovered]);
 
     return (
@@ -63,7 +63,7 @@ export default function Carousel() {
                     </button>
                 )}
 
-                {isHovered && currentIndex < events.length - 5 && (
+                {isHovered && currentIndex < events.length - 3 && (
                     <button className="nav-button nav-button-right" onClick={handleNext}>
                         <ChevronRight size={24} />
                     </button>
